@@ -1,15 +1,16 @@
 package com.example.tddemo.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 @Component
-@PropertySource("classpath:/TDengine")
+@Data
 public class tdconfig implements InitializingBean {
 
-    @Value("${jdbcUrl}")
+    @Value("${Spring.jdbcUrl}")
     private String jdbcUrl;
 
     public static String jdbcurl;

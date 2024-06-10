@@ -1,5 +1,5 @@
-TDengine:
-  jdbcUrl = jdbc:TAOS://weiwei-ThinkStation-P920:6030?user=root&password=taosdata;
+Spring:
+  jdbcUrl: jdbc:TAOS://weiwei-ThinkStation-P920:6030?user=root&password=taosdata;
 
 server:
   port: 8888

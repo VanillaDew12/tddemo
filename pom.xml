@@ -34,11 +34,7 @@
 			<version>3.2.11</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.grapetec</groupId>
-			<artifactId>infra-client</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
