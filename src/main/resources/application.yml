@@ -1,5 +1,5 @@
 Spring:
-  jdbcUrl: jdbc:TAOS://weiwei-ThinkStation-P920:6030?user=root&password=taosdata;
+  jdbcUrl: jdbc:TAOS://weiwei-ThinkStation-P920:6030/power?user=root&password=taosdata
 
 server:
   port: 8888

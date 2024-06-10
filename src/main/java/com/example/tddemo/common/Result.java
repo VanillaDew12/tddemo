@@ -17,12 +17,13 @@ public class Result {
         result.setCode("SUCCESS_CODE");
         return result;
     }
-    public static Result success(String code){
-        Result result = new Result();
-        result.setCode("SUCCESS_CODE");
-        result.setData(code);
-        return result;
-    }public static Result error(String msg){
+//    public static Result success(String code){
+//        Result result = new Result();
+//        result.setCode("SUCCESS_CODE");
+//        result.setData(code);
+//        return result;
+//    }
+    public static Result error(String msg){
         Result result = new Result();
         result.setCode("ERROR_CODE");
         result.setMsg(msg);

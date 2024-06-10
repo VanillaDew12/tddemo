@@ -9,21 +9,25 @@ import java.util.Properties;
 import com.example.tddemo.common.Result;
 import com.example.tddemo.config.tdconfig;
 import com.taosdata.jdbc.TSDBDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class JNIConnectExample {
-    @PostMapping("/hello")
-    public Result insert(String[] args) throws SQLException{
 
+    @RequestMapping("/hello")
+    public Result insert(String[] args) throws SQLException, ClassNotFoundException {
 
+        System.out.println(tdconfig.jdbcurl);
+        Class.forName("com.taosdata.jdbc.TSDBDriver");
         Properties connProps = new Properties();
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_CHARSET, "UTF-8");
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_LOCALE, "en_US.UTF-8");
         connProps.setProperty(TSDBDriver.PROPERTY_KEY_TIME_ZONE, "UTC-8");
-        Connection conn = DriverManager.getConnection(tdconfig.jdbcurl, connProps);
+        Connection conn = DriverManager.getConnection(tdconfig.jdbcurl , connProps);
 
         Statement stmt = conn.createStatement();
 
