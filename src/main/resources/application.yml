@@ -1,5 +1,9 @@
-Spring:
-  jdbcUrl: jdbc:TAOS://weiwei-ThinkStation-P920:6030/power?user=root&password=taosdata
+spring:
+  datasource:
+    url: jdbc:TAOS://weiwei-ThinkStation-P920:6030/
+    username: root
+    password: taosdata
+    driver-class-name: com.taosdata.jdbc.TSDBDriver
 
-server:
-  port: 8888
+app:
+  data-collection-interval: 10000 # 数据采集间隔，单位为毫秒
