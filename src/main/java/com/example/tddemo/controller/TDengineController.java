@@ -1,5 +1,6 @@
 package com.example.tddemo.controller;
 
+import com.example.tddemo.Utils.TDengineUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,9 @@ public class TDengineController {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private TDengineUtils tDengineUtils;
 
     @PostMapping("/insert")
     public String insertData(@RequestBody Map<String, Object> payload) {
@@ -37,6 +41,18 @@ public class TDengineController {
         } catch (SQLException e) {
             e.printStackTrace();
             return "Error inserting data: " + e.getMessage();
+        }
+    }
+
+    // 新增的端点，用于手动触发数据采集
+    @GetMapping("/collect")
+    public String collectData() {
+        try {
+            tDengineUtils.collectData(); // 手动调用 collectData 方法
+            return "Data collected successfully.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error collecting data: " + e.getMessage();
         }
     }
 }
