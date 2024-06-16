@@ -4,15 +4,12 @@ import com.example.tddemo.Utils.TDengineUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.sql.DataSource;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tdengine")
 public class TDengineController {
-
-    @Autowired
-    private DataSource dataSource;
 
     @Autowired
     private TDengineUtils tDengineUtils;
@@ -26,7 +23,7 @@ public class TDengineController {
         return tDengineUtils.insertData(ts, temperature, humidity);
     }
 
-    // 新增的端点，用于手动触发数据采集,采集一次
+    // 用于手动触发数据采集,采集一次
     @GetMapping("/collect")
     public String collectDataManually() {
         try {
@@ -57,5 +54,11 @@ public class TDengineController {
     public String getStatus() {
         boolean isCollecting = tDengineUtils.isCollecting();
         return "TDengine API is running. Data collection is " + (isCollecting ? "enabled" : "disabled") + ".";
+    }
+
+    // 查询 d1 表中的数据
+    @GetMapping("/query")
+    public List<Map<String, Object>> queryData(@RequestParam(required = false) Integer limit) {
+        return tDengineUtils.queryData(limit); // 调用 TDengineUtils 的查询方法
     }
 }
